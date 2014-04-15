@@ -18,6 +18,7 @@ libcangjie_la_includedir = $(includedir)/cangjie
 
 
 # -- Introspection -------------------
+if HAVE_INTROSPECTION
 introspection_files = $(libcangjie_la_SOURCES) $(libcangjie_la_include_HEADERS)
 
 Cangjie-2.0.gir: $(INTROSPECTION_SCANNER) libcangjie.la Makefile
@@ -46,6 +47,7 @@ typelibs_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
 
 pygioverridesdir = $(PYGI_OVERRIDES_DIR)
 pygioverrides_PYTHON = overrides/python/Cangjie.py
+endif
 
 
 # -- Data ----------------------------

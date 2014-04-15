@@ -23,16 +23,20 @@ AS_IF([test "x$GTESTER" = "x"],
 
 GOBJECT_INTROSPECTION_CHECK(1.39.0)
 
-AS_IF([test "x$PYTHON" = "x"],
+AS_IF([test "x$found_introspection" = "xyes"],
       [
-        AM_PATH_PYTHON(2.7)
+        AS_IF([test "x$PYTHON" = "x"],
+              [
+                AM_PATH_PYTHON(2.7)
+              ]
+        )
+
+        AC_MSG_CHECKING(for pygobject overrides directory)
+        PYGI_OVERRIDES_DIR="`$PYTHON -c 'import gi; print(gi._overridesdir)' 2>/dev/null`"
+        AC_SUBST(PYGI_OVERRIDES_DIR)
+        AC_MSG_RESULT($PYGI_OVERRIDES_DIR)
       ]
 )
-
-AC_MSG_CHECKING(for pygobject overrides directory)
-PYGI_OVERRIDES_DIR="`$PYTHON -c 'import gi; print(gi._overridesdir)' 2>/dev/null`"
-AC_SUBST(PYGI_OVERRIDES_DIR)
-AC_MSG_RESULT($PYGI_OVERRIDES_DIR)
 
 # Define these substitions here to keep all version information in one place.
 # For information on how to properly maintain the library version information,
