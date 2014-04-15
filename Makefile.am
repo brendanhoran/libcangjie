@@ -7,10 +7,12 @@ lib_LTLIBRARIES = libcangjie.la
 
 libcangjie_la_LDFLAGS = -version-info $(CANGJIE_SO_VERSION) $(GCOV_LDFLAGS)
 libcangjie_la_SOURCES = \
+	src/cangjie-char.c \
 	$(NULL)
 libcangjie_la_CFLAGS = $(glib2_CFLAGS)
 libcangjie_la_LIBADD = $(glib2_LIBS)
 libcangjie_la_include_HEADERS = \
+	src/cangjie-char.h \
 	$(NULL)
 libcangjie_la_includedir = $(includedir)/cangjie
 
