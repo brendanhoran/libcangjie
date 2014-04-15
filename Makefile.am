@@ -31,6 +31,8 @@ Cangjie_2_0_gir_CFLAGS = \
 	$(glib2_CFLAGS) \
 	$(NULL)
 
+Cangjie_2_0_gir_INCLUDES = GObject-2.0
+Cangjie_2_0_gir_PACKAGES = gobject-2.0
 Cangjie_2_0_gir_LIBS = libcangjie.la
 Cangjie_2_0_gir_FILES = $(introspection_files)
 Cangjie_2_0_gir_EXPORT_PACKAGES = cangjie
