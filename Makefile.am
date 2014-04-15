@@ -44,6 +44,9 @@ gir_DATA = $(INTROSPECTION_GIRS)
 typelibsdir = $(libdir)/girepository-1.0
 typelibs_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
 
+pygioverridesdir = $(PYGI_OVERRIDES_DIR)
+pygioverrides_PYTHON = overrides/python/Cangjie.py
+
 
 # -- Data ----------------------------
 pkgconfig_DATA = data/cangjie.pc

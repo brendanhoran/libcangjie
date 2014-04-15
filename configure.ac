@@ -14,14 +14,21 @@ LT_INIT([disable-static])
 
 PKG_CHECK_MODULES(glib2, [glib-2.0 gobject-2.0])
 
-GOBJECT_INTROSPECTION_CHECK(1.39.0)
-
 AC_PATH_PROG(GTESTER, gtester)
 AS_IF([test "x$GTESTER" = "x"],
       [
         AC_MSG_ERROR("Could not find gtester")
       ]
 )
+
+GOBJECT_INTROSPECTION_CHECK(1.39.0)
+
+AM_PATH_PYTHON(2.7)
+
+AC_MSG_CHECKING(for pygobject overrides directory)
+PYGI_OVERRIDES_DIR="`$PYTHON -c 'import gi; print(gi._overridesdir)' 2>/dev/null`"
+AC_SUBST(PYGI_OVERRIDES_DIR)
+AC_MSG_RESULT($PYGI_OVERRIDES_DIR)
 
 # Define these substitions here to keep all version information in one place.
 # For information on how to properly maintain the library version information,

@@ -18,6 +18,7 @@ m4/
 Makefile
 Makefile.in
 missing
+py-compile
 stamp-h1
 test-driver
 test-suite.log
