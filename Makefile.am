@@ -17,6 +17,32 @@ libcangjie_la_include_HEADERS = \
 libcangjie_la_includedir = $(includedir)/cangjie
 
 
+# -- Introspection -------------------
+introspection_files = $(libcangjie_la_SOURCES) $(libcangjie_la_include_HEADERS)
+
+Cangjie-2.0.gir: $(INTROSPECTION_SCANNER) libcangjie.la Makefile
+Cangjie_2_0_gir_NAMESPACE = Cangjie
+Cangjie_2_0_gir_VERSION = $(VERSION)
+Cangjie_2_0_gir_SCANNERFLAGS = \
+	--warn-all \
+	$(NULL)
+Cangjie_2_0_gir_CFLAGS = \
+	$(AM_CPPFLAGS) \
+	$(glib2_CFLAGS) \
+	$(NULL)
+
+Cangjie_2_0_gir_LIBS = libcangjie.la
+Cangjie_2_0_gir_FILES = $(introspection_files)
+Cangjie_2_0_gir_EXPORT_PACKAGES = cangjie
+INTROSPECTION_GIRS = Cangjie-2.0.gir
+
+girdir = $(datadir)/gir-1.0
+gir_DATA = $(INTROSPECTION_GIRS)
+
+typelibsdir = $(libdir)/girepository-1.0
+typelibs_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
+
+
 # -- Data ----------------------------
 pkgconfig_DATA = data/cangjie.pc
 pkgconfigdir = $(libdir)/pkgconfig
@@ -50,12 +76,15 @@ AUTHORS:
 
 
 # -- Common --------------------------
+-include $(INTROSPECTION_MAKEFILE)
 AM_CPPFLAGS = -I$(top_srcdir)/src
 AM_CFLAGS = -Wall -Wdeclaration-after-statement
 
 CLEANFILES = \
 	AUTHORS \
 	data/cangjie.pc \
+	$(gir_DATA) \
+	$(typelibs_DATA) \
 	$(NULL)
 
 EXTRA_DIST = \

@@ -37,6 +37,8 @@ gcov-report.txt
 *.gcno
 *.gcov
 *.tar.xz
+*.gir
+*.typelib
 
 # -- Temp editor files ---------------
 *.swp

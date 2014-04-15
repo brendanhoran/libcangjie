@@ -14,6 +14,8 @@ LT_INIT([disable-static])
 
 PKG_CHECK_MODULES(glib2, [glib-2.0 gobject-2.0])
 
+GOBJECT_INTROSPECTION_CHECK(1.39.0)
+
 AC_PATH_PROG(GTESTER, gtester)
 AS_IF([test "x$GTESTER" = "x"],
       [
