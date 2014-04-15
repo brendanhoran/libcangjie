@@ -23,18 +23,11 @@ AS_IF([test "x$GTESTER" = "x"],
 
 GOBJECT_INTROSPECTION_CHECK(1.39.0)
 
+# Search Python if introspection is enabled, to find the overrides install dir
+# No need to make Python mandatory otherwise
 AS_IF([test "x$found_introspection" = "xyes"],
       [
-        AS_IF([test "x$PYTHON" = "x"],
-              [
-                AM_PATH_PYTHON(2.7)
-              ]
-        )
-
-        AC_MSG_CHECKING(for pygobject overrides directory)
-        PYGI_OVERRIDES_DIR="`$PYTHON -c 'import gi; print(gi._overridesdir)' 2>/dev/null`"
-        AC_SUBST(PYGI_OVERRIDES_DIR)
-        AC_MSG_RESULT($PYGI_OVERRIDES_DIR)
+        AM_PATH_PYTHON(2.7)
       ]
 )
 

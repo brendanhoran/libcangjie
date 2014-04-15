@@ -45,7 +45,7 @@ gir_DATA = $(INTROSPECTION_GIRS)
 typelibsdir = $(libdir)/girepository-1.0
 typelibs_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
 
-pygioverridesdir = $(PYGI_OVERRIDES_DIR)
+pygioverridesdir = $(pyexecdir)/gi/overrides
 pygioverrides_PYTHON = overrides/python/Cangjie.py
 endif
 
