@@ -22,6 +22,17 @@ pkgconfig_DATA = data/cangjie.pc
 pkgconfigdir = $(libdir)/pkgconfig
 
 
+# -- Unit tests ----------------------
+noinst_PROGRAMS = $(TEST_PROGS)
+TEST_PROGS = tests/cangjie-char
+
+tests_cangjie_char_LDADD = libcangjie.la
+tests_cangjie_char_CFLAGS = $(glib2_CFLAGS)
+
+check-local: $(TEST_PROGS)
+	$(GTESTER) --verbose $(TEST_PROGS)
+
+
 # -- Misc ----------------------------
 AUTHORS:
 	@if test -d "$(srcdir)/.git"; then \
