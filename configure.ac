@@ -23,7 +23,11 @@ AS_IF([test "x$GTESTER" = "x"],
 
 GOBJECT_INTROSPECTION_CHECK(1.39.0)
 
-AM_PATH_PYTHON(2.7)
+AS_IF([test "x$PYTHON" = "x"],
+      [
+        AM_PATH_PYTHON(2.7)
+      ]
+)
 
 AC_MSG_CHECKING(for pygobject overrides directory)
 PYGI_OVERRIDES_DIR="`$PYTHON -c 'import gi; print(gi._overridesdir)' 2>/dev/null`"
