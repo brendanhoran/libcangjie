@@ -84,7 +84,7 @@ AUTHORS:
 
 # -- Common --------------------------
 -include $(INTROSPECTION_MAKEFILE)
-AM_CPPFLAGS = -I$(top_srcdir)/src
+AM_CPPFLAGS = -I$(top_srcdir)/src -DCANGJIE_COMPILATION
 AM_CFLAGS = -Wall -Wdeclaration-after-statement
 
 CLEANFILES = \

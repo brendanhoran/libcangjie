@@ -21,6 +21,10 @@
 #ifndef __CANGJIE_CHAR_H__
 #define __CANGJIE_CHAR_H__
 
+#if !defined (__CANGJIE_H__) && !defined (CANGJIE_COMPILATION)
+#error "Only <cangjie.h> can be included directly."
+#endif
+
 #include <glib-object.h>
 /*
  * Potentially, include other headers on which this header depends.
