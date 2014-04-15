@@ -28,7 +28,14 @@ struct _CangjieCharPrivate
     guint  frequency;
 };
 
+#if GLIB_CHECK_VERSION(2,38,0)
 G_DEFINE_TYPE_WITH_PRIVATE (CangjieChar, cangjie_char, G_TYPE_OBJECT)
+#else
+G_DEFINE_TYPE (CangjieChar, cangjie_char, G_TYPE_OBJECT)
+
+#define cangjie_char_get_instance_private(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), CANGJIE_TYPE_CHAR, CangjieCharPrivate))
+#endif
+
 
 enum
 {
@@ -152,6 +159,10 @@ cangjie_char_class_init (CangjieCharClass *klass)
 
     gobject_class->dispose = cangjie_char_dispose;
     gobject_class->finalize = cangjie_char_finalize;
+
+#if !GLIB_CHECK_VERSION(2,38,0)
+    g_type_class_add_private (klass, sizeof (CangjieCharPrivate));
+#endif
 
     obj_properties[PROP_CANGJIE_CHAR_CHCHAR] =
         g_param_spec_string ("chchar",
