@@ -22,5 +22,6 @@
 #define __CANGJIE_H__
 
 #include <cangjie-char.h>
+#include <cangjie-enum.h>
 
 #endif
