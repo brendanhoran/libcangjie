@@ -26,9 +26,6 @@
 #endif
 
 #include <glib-object.h>
-/*
- * Potentially, include other headers on which this header depends.
- */
 
 /*
  * Type macros.
@@ -57,8 +54,6 @@ struct _CangjieCharClass
 {
     /* Parent class structure */
     GObjectClass parent_class;
-
-    /* class members */
 };
 
 /* used by CANGJIE_TYPE_CHAR */
