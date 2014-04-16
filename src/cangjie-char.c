@@ -17,7 +17,7 @@
  */
 
 
-#include <cangjie-char.h>
+#include "cangjie-char.h"
 
 
 struct _CangjieCharPrivate

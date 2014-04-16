@@ -21,7 +21,7 @@
 #ifndef __CANGJIE_H__
 #define __CANGJIE_H__
 
-#include <cangjie-char.h>
-#include <cangjie-enum.h>
+#include "cangjie-char.h"
+#include "cangjie-enum.h"
 
 #endif
