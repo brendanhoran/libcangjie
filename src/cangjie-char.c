@@ -120,7 +120,7 @@ cangjie_char_get_property (GObject    *object,
         default:
             /* We don't have any other property... */
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-           break;
+            break;
     }
 }
 
