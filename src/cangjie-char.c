@@ -125,16 +125,6 @@ cangjie_char_get_property (GObject    *object,
 }
 
 static void
-cangjie_char_dispose (GObject *object)
-{
-    /* Always chain up to the parent class; there is no need to check if
-     * the parent class implements the dispose() virtual function: it is
-     * always guaranteed to do so
-     */
-    G_OBJECT_CLASS (cangjie_char_parent_class)->dispose (object);
-}
-
-static void
 cangjie_char_finalize (GObject *object)
 {
     CangjieChar *self = CANGJIE_CHAR (object);
@@ -157,7 +147,6 @@ cangjie_char_class_init (CangjieCharClass *klass)
     gobject_class->set_property = cangjie_char_set_property;
     gobject_class->get_property = cangjie_char_get_property;
 
-    gobject_class->dispose = cangjie_char_dispose;
     gobject_class->finalize = cangjie_char_finalize;
 
 #if !GLIB_CHECK_VERSION(2,38,0)
