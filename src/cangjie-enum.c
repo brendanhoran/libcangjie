@@ -61,3 +61,5 @@ cangjie_version_get_type (void)
 
   return type;
 }
+
+G_DEFINE_QUARK (cangjie-error-quark, cangjie_error)

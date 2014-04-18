@@ -54,6 +54,14 @@ typedef enum {
 #define CANGJIE_TYPE_VERSION cangjie_version_get_type()
 GType cangjie_version_get_type (void);
 
+typedef enum
+{
+  CANGJIE_ERROR_INVALID_INPUT,
+} CangjieError;
+
+#define CANGJIE_ERROR cangjie_error_quark()
+GQuark cangjie_error_quark (void);
+
 G_END_DECLS
 
 #endif
