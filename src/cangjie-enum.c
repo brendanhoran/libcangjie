@@ -62,4 +62,12 @@ cangjie_version_get_type (void)
   return type;
 }
 
+#if GLIB_CHECK_VERSION(2,34,0)
 G_DEFINE_QUARK (cangjie-error-quark, cangjie_error)
+#else
+GQuark
+cangjie_error_quark (void)
+{
+    return g_quark_from_static_string ("cangjie-error-quark");
+}
+#endif
