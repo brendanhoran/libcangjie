@@ -33,20 +33,19 @@ test_cangjie_get_radical(void)
     GError *error = NULL;
 
     radical = cangjie_context_get_radical (cj, 'a', &error);
-    g_assert_null (error);
+    g_assert_no_error (error);
     g_assert_cmpstr (radical, ==, "\xE6\x97\xA5" /* 日 */);
 
     g_free (radical);
 
     radical = cangjie_context_get_radical (cj, '*', &error);
-    g_assert_null (error);
+    g_assert_no_error (error);
     g_assert_cmpstr (radical, ==, "\xEF\xBC\x8A" /* ＊ */);
 
     g_free (radical);
 
     radical = cangjie_context_get_radical (cj, '#', &error);
-    g_assert_nonnull (error);
-    g_assert_true (error->code == CANGJIE_ERROR_INVALID_INPUT);
+    g_assert_error (error, CANGJIE_ERROR, CANGJIE_ERROR_INVALID_INPUT);
     g_assert_cmpstr (radical, ==, "");
 
     g_free (radical);
