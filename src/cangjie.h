@@ -26,6 +26,8 @@
 
 #include <glib-object.h>
 
+G_BEGIN_DECLS
+
 /*
  * Type macros.
  */
@@ -57,5 +59,7 @@ struct _CangjieContextClass
 
 /* used by CANGJIE_TYPE_CONTEXT */
 GType cangjie_context_get_type (void);
+
+G_END_DECLS
 
 #endif

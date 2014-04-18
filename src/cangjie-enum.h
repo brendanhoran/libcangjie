@@ -27,6 +27,8 @@
 
 #include <glib-object.h>
 
+G_BEGIN_DECLS
+
 typedef enum {
     CANGJIE_FILTER_ALL         = 0,
     CANGJIE_FILTER_BIG5        = (1 << 0),
@@ -51,5 +53,7 @@ typedef enum {
 
 #define CANGJIE_TYPE_VERSION cangjie_version_get_type()
 GType cangjie_version_get_type (void);
+
+G_END_DECLS
 
 #endif

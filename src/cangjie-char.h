@@ -27,6 +27,8 @@
 
 #include <glib-object.h>
 
+G_BEGIN_DECLS
+
 /*
  * Type macros.
  */
@@ -59,5 +61,6 @@ struct _CangjieCharClass
 /* used by CANGJIE_TYPE_CHAR */
 GType cangjie_char_get_type (void);
 
+G_END_DECLS
 
 #endif /* __CANGJIE_CHAR_H__ */
