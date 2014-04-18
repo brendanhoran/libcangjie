@@ -24,6 +24,36 @@ test_new_cangjie_context (void)
 }
 
 void
+test_cangjie_get_radical(void)
+{
+    CangjieContext *cj = g_object_new (CANGJIE_TYPE_CONTEXT, NULL);
+
+    gchar *radical;
+
+    GError *error = NULL;
+
+    radical = cangjie_context_get_radical (cj, 'a', &error);
+    g_assert_null (error);
+    g_assert_cmpstr (radical, ==, "\xE6\x97\xA5" /* 日 */);
+
+    g_free (radical);
+
+    radical = cangjie_context_get_radical (cj, '*', &error);
+    g_assert_null (error);
+    g_assert_cmpstr (radical, ==, "\xEF\xBC\x8A" /* ＊ */);
+
+    g_free (radical);
+
+    radical = cangjie_context_get_radical (cj, '#', &error);
+    g_assert_nonnull (error);
+    g_assert_true (error->code == CANGJIE_ERROR_INVALID_INPUT);
+    g_assert_cmpstr (radical, ==, "");
+
+    g_free (radical);
+    g_object_unref (cj);
+}
+
+void
 test_cangjie_get_characters_single_result (void)
 {
     /* TODO: Implement this */
@@ -62,6 +92,7 @@ main (int argc, char** argv)
     g_test_init (&argc, &argv, NULL);
 
     g_test_add_func ("/cangjie/new", test_new_cangjie_context);
+    g_test_add_func ("/cangjie/get-radical", test_cangjie_get_radical);
     g_test_add_func ("/cangjie/get-single-character", test_cangjie_get_characters_single_result);
     g_test_add_func ("/cangjie/get-ordered-characters", test_cangjie_get_characters_results_order);
     g_test_add_func ("/cangjie/get-characters-by-shortcode", test_cangjie_get_characters_by_shortcode);
