@@ -60,6 +60,10 @@ struct _CangjieContextClass
 /* used by CANGJIE_TYPE_CONTEXT */
 GType cangjie_context_get_type (void);
 
+gchar* cangjie_context_get_radical (CangjieContext  *self,
+                                    const char       key,
+                                    GError         **error);
+
 G_END_DECLS
 
 #endif

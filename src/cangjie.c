@@ -146,3 +146,53 @@ cangjie_context_init (CangjieContext *self)
 {
     self->priv = cangjie_context_get_instance_private (self);
 }
+
+const gchar *cangjie_radicals[] = {
+    "\xE6\x97\xA5", // 日
+    "\xE6\x9C\x88", // 月
+    "\xE9\x87\x91", // 金
+    "\xE6\x9C\xA8", // 木
+    "\xE6\xB0\xB4", // 水
+    "\xE7\x81\xAB", // 火
+    "\xE5\x9C\x9F", // 土
+    "\xE7\xAB\xB9", // 竹
+    "\xE6\x88\x88", // 戈
+    "\xE5\x8D\x81", // 十
+    "\xE5\xA4\xA7", // 大
+    "\xE4\xB8\xAD", // 中
+    "\xE4\xB8\x80", // 一
+    "\xE5\xBC\x93", // 弓
+    "\xE4\xBA\xBA", // 人
+    "\xE5\xBF\x83", // 心
+    "\xE6\x89\x8B", // 手
+    "\xE5\x8F\xA3", // 口
+    "\xE5\xB0\xB8", // 尸
+    "\xE5\xBB\xBF", // 廿
+    "\xE5\xB1\xB1", // 山
+    "\xE5\xA5\xB3", // 女
+    "\xE7\x94\xB0", // 田
+    "\xE9\x9B\xA3", // 難
+    "\xE5\x8D\x9C", // 卜
+    "\xEF\xBC\xBA", // Ｚ
+};
+
+gchar*
+cangjie_context_get_radical (CangjieContext  *self,
+                             const char       key,
+                             GError         **error)
+{
+    if ((key < 'a' || key > 'z') && (key != '*')) {
+        g_set_error (error, CANGJIE_ERROR,
+                     CANGJIE_ERROR_INVALID_INPUT,
+                     "Invalid input key: '%c'", key);
+        return g_strdup ("");
+    }
+
+    if (key == '*') {
+        // Special case for the wildcard '*'
+        return g_strdup ("＊");
+    }
+
+    // The actual Cangjie radicals
+    return g_strndup (cangjie_radicals[key - 'a'], 4);
+}
