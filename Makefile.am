@@ -61,7 +61,13 @@ pkgconfigdir = $(libdir)/pkgconfig
 
 # -- Unit tests ----------------------
 noinst_PROGRAMS = $(TEST_PROGS)
-TEST_PROGS = tests/cangjie-char
+TEST_PROGS = \
+	tests/cangjie \
+	tests/cangjie-char \
+	$(NULL)
+
+tests_cangjie_LDADD = libcangjie.la
+tests_cangjie_CFLAGS = $(glib2_CFLAGS)
 
 tests_cangjie_char_LDADD = libcangjie.la
 tests_cangjie_char_CFLAGS = $(glib2_CFLAGS)
