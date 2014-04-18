@@ -59,8 +59,5 @@ struct _CangjieCharClass
 /* used by CANGJIE_TYPE_CHAR */
 GType cangjie_char_get_type (void);
 
-/*
- * Method definitions.
- */
 
 #endif /* __CANGJIE_CHAR_H__ */
